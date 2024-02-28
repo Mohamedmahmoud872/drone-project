@@ -11,7 +11,7 @@ import com.example.dronetaskv1.model.Medication;
 @Service
 public interface MedicationService {
 
-    void registerMedications(List<Medication> medications);
+    List<Medication> registerMedications(List<Medication> medications);
 
     double calculateMedicationsWeight(List<Medication> medications);
 

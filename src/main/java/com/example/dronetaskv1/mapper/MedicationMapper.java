@@ -17,6 +17,8 @@ public interface MedicationMapper {
 
     Medication dtoToMedication(RegisterMedicationsDTO medication);
 
+    List<Medication> resDtoToMedications(List<MedicationResDTO> medications);
+
     List<Medication> dtosToMedications(List<RegisterMedicationsDTO> medications);
 
 }

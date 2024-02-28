@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.dronetaskv1.constant.Constraints;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +24,7 @@ public class LoadDroneDTO {
     private String serialNumber;
 
     @NotEmpty(message = "Insert at least one medication")
+    @Valid
     private List<RegisterMedicationsDTO> medications;
 
 

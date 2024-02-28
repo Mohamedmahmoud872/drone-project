@@ -1,4 +1,4 @@
-package com.example.dronetaskv1.seviceImpl;
+package com.example.dronetaskv1.serviceImpl;
 
 import java.util.List;
 
@@ -13,7 +13,6 @@ import com.example.dronetaskv1.mapper.MedicationMapper;
 import com.example.dronetaskv1.model.Drone;
 import com.example.dronetaskv1.model.DroneState;
 import com.example.dronetaskv1.model.Medication;
-import com.example.dronetaskv1.repository.DroneRepository;
 import com.example.dronetaskv1.service.DroneHelperService;
 import com.example.dronetaskv1.service.DroneMedicationService;
 import com.example.dronetaskv1.service.MedicationService;
@@ -21,12 +20,12 @@ import com.example.dronetaskv1.service.MedicationService;
 @Service
 public class DroneMedicationServiceImpl implements DroneMedicationService {
 
-    private DroneHelperService droneHelperService;
-    private MedicationMapper medicationMapper;
-    private MedicationService medicationService;
+    private final DroneHelperService droneHelperService;
+    private final MedicationMapper medicationMapper;
+    private final MedicationService medicationService;
 
-    public DroneMedicationServiceImpl(DroneRepository droneRepository, MedicationService medicationService,
-        DroneHelperService droneHelperService, MedicationMapper medicationMapper) {
+    public DroneMedicationServiceImpl(MedicationService medicationService,
+                                      DroneHelperService droneHelperService, MedicationMapper medicationMapper) {
         this.medicationService = medicationService;
         this.droneHelperService = droneHelperService;
         this.medicationMapper = medicationMapper;
@@ -36,13 +35,12 @@ public class DroneMedicationServiceImpl implements DroneMedicationService {
     public void loadDroneWithMedications(LoadDroneDTO loadDroneDTO) {
 
         List<Medication> medications = medicationMapper.dtosToMedications(loadDroneDTO.getMedications());
+        Drone drone = droneHelperService.findBySerialNumberAndDroneState(loadDroneDTO.getSerialNumber(), DroneState.LOADING);
         medicationService.throwExceptionIfMedicationExists(medications);
-        Drone drone = droneHelperService.getDroneBySerial(loadDroneDTO.getSerialNumber());
-        checkIfDroneInLoadingState(drone);
         double medicationsWeight = medicationService.calculateMedicationsWeight(medications);
-        if(!droneHelperService.isDroneHasSpace(drone, medicationsWeight)) {
+        if (!droneHelperService.isDroneHasSpace(drone, medicationsWeight)) {
             throw new DroneWeightExeededException(Message.DRONE_WEIGHT_EXCEEDED);
-        }else {
+        } else {
             loadDrone(medications, medicationsWeight, drone);
         }
     }
@@ -57,7 +55,7 @@ public class DroneMedicationServiceImpl implements DroneMedicationService {
     }
 
     private void changeStateIfDroneIsFull(Drone drone) {
-        if(Double.compare(drone.getDroneWeight(), drone.getLoadedWeight()) == 0) {
+        if (Double.compare(drone.getDroneWeight(), drone.getLoadedWeight()) == 0) {
             drone.setDroneState(DroneState.LOADED);
         }
     }
@@ -71,16 +69,8 @@ public class DroneMedicationServiceImpl implements DroneMedicationService {
     @Override
     public List<MedicationResDTO> getMedications(String serialNumber) {
         Drone drone = droneHelperService.getDroneBySerial(serialNumber);
-        List<MedicationResDTO> medications = medicationService.findMedications(drone);
-        return medications;
+        return medicationService.findMedications(drone);
     }
 
-    private void checkIfDroneInLoadingState(Drone drone) {
-        List<Drone> loadingDrones = droneHelperService.findByDroneState(DroneState.LOADING);
-
-        if (!loadingDrones.contains(drone)) {
-            throw new DroneNotLoadingException(Message.DRONE_NOT_LOADING);
-        }
-    }
 
 }

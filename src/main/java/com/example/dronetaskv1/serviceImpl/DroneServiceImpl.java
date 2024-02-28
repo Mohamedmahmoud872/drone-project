@@ -1,4 +1,4 @@
-package com.example.dronetaskv1.seviceImpl;
+package com.example.dronetaskv1.serviceImpl;
 
 import java.util.List;
 
@@ -30,13 +30,13 @@ import lombok.RequiredArgsConstructor;
 public class DroneServiceImpl implements DroneService, DroneHelperService {
 
     private final DroneRepository droneRepository;
-    private final  DroneMapper droneMapper;
-    private History history;
-    
+    private final DroneMapper droneMapper;
+    private final History history;
+
 
     @Override
     public DroneResponseDTO addDrone(RegisterDroneDTO drone) {
-        checkIfDroneExists(drone.getSerialNumber());
+        validateDrone(drone);
         Drone myDrone = droneMapper.registDroneDtotoDrone(drone);
 
         myDrone.setDroneState(DroneState.classifyState(drone.getBatteryCapacity()));
@@ -46,6 +46,7 @@ public class DroneServiceImpl implements DroneService, DroneHelperService {
         Drone savedDrone = updateDrone(myDrone);
         return droneMapper.registerDroneDTO(savedDrone);
     }
+
 
     @Override
     public List<DroneResponseDTO> getAvailableDrones() {
@@ -63,7 +64,7 @@ public class DroneServiceImpl implements DroneService, DroneHelperService {
 
 
     @Scheduled(fixedRate = 4000)
-    private void deleverMedication() {
+    private void deliverMedication() {
         List<Drone> loadedDrones = findByDroneState(DroneState.LOADED);
         for (Drone drone : loadedDrones) {
             Simulation.simulateDroneActivity(drone, DroneState.DELIVERING);
@@ -78,7 +79,7 @@ public class DroneServiceImpl implements DroneService, DroneHelperService {
         for (Drone drone : deliveringDrones) {
             Simulation.simulateDroneActivity(drone, DroneState.DELIVERED);
             drone.setLoadedWeight(0.0);
-            history.updateHistory(drone, Message.DRONE_DELEVERED);
+            history.updateHistory(drone, Message.DRONE_DELIVERED);
         }
         updateDrones(deliveringDrones);
     }
@@ -97,9 +98,9 @@ public class DroneServiceImpl implements DroneService, DroneHelperService {
     private void checkDrone() {
         List<Drone> returningDrones = findByDroneState(DroneState.RETURNING);
         for (Drone drone : returningDrones) {
-            if(drone.getBatteryCapacity() <= Constraints.BATTERY_CAPACITY_LIMIT) {
+            if (drone.getBatteryCapacity() <= Constraints.BATTERY_CAPACITY_LIMIT) {
                 Simulation.simulateDroneActivity(drone, DroneState.IDLE);
-            }else {
+            } else {
                 Simulation.simulateDroneActivity(drone, DroneState.LOADING);
             }
             history.updateHistory(drone, Message.DRONE_RETURNED);
@@ -118,15 +119,10 @@ public class DroneServiceImpl implements DroneService, DroneHelperService {
         return droneRepository.save(drone);
     }
 
-    @Override
-    public void checkIfDroneExists(String serial) {
-        if (droneRepository.existsById(serial)) {
-            throw new DroneNotFoundException(Message.DRONE_EXISTS);
-        }
-    }
 
     @Override
     public boolean isDroneHasSpace(Drone drone, double medicationsWeight) {
+        throwExceptionIfDroneNull(drone);
         double availableWeight = drone.getDroneWeight() - drone.getLoadedWeight();
         return !(availableWeight < medicationsWeight);
     }
@@ -137,8 +133,36 @@ public class DroneServiceImpl implements DroneService, DroneHelperService {
     }
 
     @Override
+    public Drone findBySerialNumberAndDroneState(String serialNumber, DroneState droneState) {
+        return droneRepository.findBySerialNumberAndDroneState(serialNumber, droneState);
+    }
+
+    @Override
     public void updateDrones(List<Drone> drones) {
         droneRepository.saveAll(drones);
+    }
+
+    @Override
+    public void throwExceptionIfDroneExists(String serial) {
+        if (droneRepository.existsById(serial)) {
+            throw new DroneNotFoundException(Message.DRONE_EXISTS);
+        }
+    }
+
+    private void throwExceptionIfDroneNull(RegisterDroneDTO drone) {
+        if (drone == null || drone.getSerialNumber() == null) {
+            throw new DroneNotFoundException(Message.EMPTY_DATA);
+        }
+
+    }
+
+    private void validateDrone(RegisterDroneDTO drone) {
+        throwExceptionIfDroneNull(drone);
+        throwExceptionIfDroneExists(drone.getSerialNumber());
+    }
+
+    private void throwExceptionIfDroneNull(Drone drone) {
+        if(drone == null) throw new DroneNotFoundException(Message.DRONE_NOT_EXISTS);
     }
 
 }

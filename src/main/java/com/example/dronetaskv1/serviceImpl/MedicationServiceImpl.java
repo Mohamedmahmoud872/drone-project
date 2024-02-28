@@ -1,4 +1,4 @@
-package com.example.dronetaskv1.seviceImpl;
+package com.example.dronetaskv1.serviceImpl;
 
 import java.util.List;
 // import java.util.Optional;
@@ -27,7 +27,7 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public void registerMedications(List<Medication> medications) {
+    public List<Medication> registerMedications(List<Medication> medications) {
         // for (Medication medication : medications) {
         //     Optional<Medication> savedMedication = medicationRepository.findById(medication.getMedicationCode());
         //     if(savedMedication.isPresent()) {
@@ -39,13 +39,16 @@ public class MedicationServiceImpl implements MedicationService {
         //     }
         // }
         medicationRepository.saveAll(medications);
+        return medications;
     }
 
     @Override
     public double calculateMedicationsWeight(List<Medication> medications) {
         double total = 0;
-        for (Medication medication : medications) {
-            total += (medication.getMedicationWeight() * medication.getNumberOfPackages());
+        if(medications != null && medications.size() > 0) {
+            for (Medication medication : medications) {
+                total += (medication.getMedicationWeight() * medication.getNumberOfPackages());
+            }
         }
         return total;
     }

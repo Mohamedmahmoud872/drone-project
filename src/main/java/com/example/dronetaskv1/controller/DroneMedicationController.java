@@ -28,7 +28,7 @@ public class DroneMedicationController {
 
 
     @PostMapping("/load-medications")
-    public ResponseEntity<?> loadMeds(@RequestBody @Valid LoadDroneDTO loadDroneDTO) {
+    public ResponseEntity<?> loadMedicationsToDrone(@RequestBody @Valid LoadDroneDTO loadDroneDTO) {
 
         droneMedicationService.loadDroneWithMedications(loadDroneDTO);
 
@@ -37,7 +37,7 @@ public class DroneMedicationController {
     }
 
     @GetMapping("/get-medications/{serial}")
-    public ResponseEntity<List<MedicationResDTO>> getMeds(@PathVariable String serial) {
+    public ResponseEntity<List<MedicationResDTO>> getMedications(@PathVariable String serial) {
 
         List<MedicationResDTO> medications = droneMedicationService.getMedications(serial);
         return ResponseEntity.status(HttpStatus.OK).body(medications);

@@ -21,43 +21,28 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, List<String>>> handleDroneNotFound(DroneNotFoundException exc) {
         List<String> errors = Collections.singletonList(exc.getMessage());
 
-        Map<String, List<String>> errorResponse = new HashMap<>();
-
-        errorResponse.put("errors", errors);
-
-        return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(DroneNotLoadingException.class)
     public ResponseEntity<Map<String, List<String>>> handleDroneNotLoading(DroneNotLoadingException exc) {
         List<String> errors = Collections.singletonList(exc.getMessage());
 
-        Map<String, List<String>> errorResponse = new HashMap<>();
-
-        errorResponse.put("errors", errors);
-
-        return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(DroneWeightExeededException.class)
     public ResponseEntity<Map<String, List<String>>> handleDroneFull(DroneWeightExeededException exc) {
         List<String> errors = Collections.singletonList(exc.getMessage());
 
-        Map<String, List<String>> errorResponse = new HashMap<>();
-
-        errorResponse.put("errors", errors);
-
-        return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MedicationExistsException.class)
     public ResponseEntity<Map<String, List<String>>> handleMedicationExistsException(Exception ex) {
         List<String> errors = Collections.singletonList(ex.getMessage());
 
-        Map<String, List<String>> errorResponse = new HashMap<>();
-        errorResponse.put("errors", errors);
-
-        return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
     // to handle database constraints exceptions
@@ -71,6 +56,23 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Map<String, List<String>>> handleGeneralExceptions(Exception ex) {
+        List<String> errors = Collections.singletonList(ex.getMessage());
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public final ResponseEntity<Map<String, List<String>>> handleRuntimeExceptions(RuntimeException ex) {
+        List<String> errors = Collections.singletonList(ex.getMessage());
+        return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    private Map<String, List<String>> getErrorsMap(List<String> errors) {
+        Map<String, List<String>> errorResponse = new HashMap<>();
+        errorResponse.put("errors", errors);
+        return errorResponse;
+    }
     
 
 }

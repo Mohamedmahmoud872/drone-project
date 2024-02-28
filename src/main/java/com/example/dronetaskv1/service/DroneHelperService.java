@@ -15,12 +15,14 @@ public interface DroneHelperService {
 
     void updateDrones(List<Drone> drones);
 
-    Drone getDroneBySerial(String serial) throws DroneNotFoundException;
+    Drone getDroneBySerial(String serial);
 
     boolean isDroneHasSpace(Drone drone, double medicationsWeight);
 
-    void checkIfDroneExists(String serial) throws DroneNotFoundException;
+    void throwExceptionIfDroneExists(String serial);
 
     List<Drone> findByDroneState(DroneState droneState);
+
+    Drone findBySerialNumberAndDroneState(String serialNumber, DroneState droneState);
 
 }

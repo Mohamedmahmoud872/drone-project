@@ -7,9 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 
@@ -25,6 +23,8 @@ public class Medication {
     private String medicationName;
 
     @NotNull(message = "Medicatin weight must be inserted")
+    @DecimalMin(value = "1", message = "Medication weight can not be less than 1 gr")
+    @DecimalMax(value = "500", message = "Medication weight can not be more than 500 gr")
     @Column(name = "medication_weight")
     private double medicationWeight;
 

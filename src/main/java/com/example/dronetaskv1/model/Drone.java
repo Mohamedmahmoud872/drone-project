@@ -4,14 +4,7 @@ import java.util.List;
 
 import com.example.dronetaskv1.constant.Constraints;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
@@ -19,6 +12,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "drone")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Drone {
 
     @Id
@@ -58,18 +53,7 @@ public class Drone {
     @Column(name = "loaded_weight")
     private double loadedWeight = 0;
 
-    @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "drone", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Medication> medications;
-
-
-    public Drone(String serialNumber, DroneModel droneModel, double droneWeight, int batteryCapacity, DroneState droneState, double loadedWeight, List<Medication> medications) {
-        this.serialNumber = serialNumber;
-        this.droneModel = droneModel;
-        this.droneWeight = droneWeight;
-        this.batteryCapacity = batteryCapacity;
-        this.droneState = droneState;
-        this.loadedWeight = loadedWeight;
-        this.medications = medications;
-    }
 
 }

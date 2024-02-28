@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import org.springframework.stereotype.Component;
 
 import com.example.dronetaskv1.model.Drone;
-import com.example.dronetaskv1.seviceImpl.DroneServiceImpl;
+import com.example.dronetaskv1.serviceImpl.DroneServiceImpl;
 
 @Component
 public class LoggerHistory implements History {
