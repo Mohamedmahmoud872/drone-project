@@ -31,6 +31,11 @@ public class DroneMedicationServiceImpl implements DroneMedicationService {
         this.medicationMapper = medicationMapper;
     }
 
+    /**
+     * Loads Medications to Drone
+     *
+     * @param loadDroneDTO DTO object containing serial number of the drone and medications
+     */
     @Override
     public void loadDroneWithMedications(LoadDroneDTO loadDroneDTO) {
 
@@ -45,6 +50,13 @@ public class DroneMedicationServiceImpl implements DroneMedicationService {
         }
     }
 
+    /**
+     * Assign drone to medications and vice versa and register those medications to db
+     *
+     * @param medications Medications list
+     * @param medicationsWeight Weight of the Medications
+     * @param drone Drone to be loaded
+     */
     private void loadDrone(List<Medication> medications, double medicationsWeight, Drone drone) {
         medicationService.registerMedications(medications);
         assignDroneToMedications(medications, drone);
@@ -54,18 +66,35 @@ public class DroneMedicationServiceImpl implements DroneMedicationService {
         droneHelperService.updateDrone(drone);
     }
 
+    /**
+     * Change state from LOADING to LOADED if drone is full
+     *
+     * @param drone Drone to be checked
+     */
     private void changeStateIfDroneIsFull(Drone drone) {
         if (Double.compare(drone.getDroneWeight(), drone.getLoadedWeight()) == 0) {
             drone.setDroneState(DroneState.LOADED);
         }
     }
 
+    /**
+     * Assign the given Drone to each Medication in the list
+     *
+     * @param medications Medications list
+     * @param drone Drone to be assigned
+     */
     private void assignDroneToMedications(List<Medication> medications, Drone drone) {
         for (Medication medication : medications) {
             medication.setDrone(drone);
         }
     }
 
+    /**
+     * Get the Medications List which were loaded by given Drone
+     *
+     * @param serialNumber Serial number of the drone
+     * @return List of Medications which loaded and the serial number of the Drone
+     */
     @Override
     public List<MedicationResDTO> getMedications(String serialNumber) {
         Drone drone = droneHelperService.getDroneBySerial(serialNumber);

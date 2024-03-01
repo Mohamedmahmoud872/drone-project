@@ -18,30 +18,30 @@ import com.example.dronetaskv1.service.MedicationService;
 @Service
 public class MedicationServiceImpl implements MedicationService {
 
-    private MedicationRepository medicationRepository;
-    private MedicationMapper medicationMapper;
+    private final MedicationRepository medicationRepository;
+    private final MedicationMapper medicationMapper;
 
     public MedicationServiceImpl(MedicationRepository medicationRepository, MedicationMapper medicationMapper) {
         this.medicationRepository = medicationRepository;
         this.medicationMapper = medicationMapper;
     }
 
+    /**
+     * Save medications to database by converting RegisterMedicationDTO to Medication
+     *
+     * @param medications List of medications needs to be saved to db
+     * */
     @Override
     public List<Medication> registerMedications(List<Medication> medications) {
-        // for (Medication medication : medications) {
-        //     Optional<Medication> savedMedication = medicationRepository.findById(medication.getMedicationCode());
-        //     if(savedMedication.isPresent()) {
-        //         Medication med = savedMedication.get();
-        //         med.setNumberOfPackages(med.getNumberOfPackages() + medication.getNumberOfPackages());
-        //         medicationRepository.save(med);
-        //     }else {
-        //         medicationRepository.save(medication);
-        //     }
-        // }
         medicationRepository.saveAll(medications);
         return medications;
     }
 
+    /**
+     * Calculate weight of medication that will be saved
+     *
+     * @param medications List of medications to calculate their weight
+     * @return Total weight of medications*/
     @Override
     public double calculateMedicationsWeight(List<Medication> medications) {
         double total = 0;
@@ -53,6 +53,12 @@ public class MedicationServiceImpl implements MedicationService {
         return total;
     }
 
+    /**
+     * Utility method to find medications loaded in specific drone
+     *
+     * @param drone the drone to get medications for it
+     * @return List of medications for that drone
+     */
     @Override
     public List<MedicationResDTO> findMedications(Drone drone) {
         List<Medication> medications = medicationRepository.findByDrone(drone);
@@ -63,6 +69,11 @@ public class MedicationServiceImpl implements MedicationService {
         }
     }
 
+    /**
+     * Throw exception if medication already exists in db
+     *
+     * @param medications List of medications to check
+     */
     @Override
     public void throwExceptionIfMedicationExists(List<Medication> medications) {
         for (Medication medication : medications) {

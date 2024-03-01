@@ -1,101 +1,42 @@
-2024-02-29T00:32:40.916+02:00  INFO 3772 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Starting Dronetaskv1Application using Java 19.0.2 with PID 3772 (F:\Java\dronetaskv1\target\classes started by MOHAMED in F:\Java\dronetaskv1)
-2024-02-29T00:32:40.922+02:00  INFO 3772 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : No active profile set, falling back to 1 default profile: "default"
-2024-02-29T00:32:41.004+02:00  INFO 3772 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-02-29T00:32:41.005+02:00  INFO 3772 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-02-29T00:32:41.968+02:00  INFO 3772 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-02-29T00:32:42.033+02:00  INFO 3772 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 2 JPA repository interfaces.
-2024-02-29T00:32:42.742+02:00  INFO 3772 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2024-02-29T00:32:42.756+02:00  INFO 3772 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-02-29T00:32:42.758+02:00  INFO 3772 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
-2024-02-29T00:32:42.824+02:00  INFO 3772 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-02-29T00:32:42.824+02:00  INFO 3772 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1818 ms
-2024-02-29T00:32:42.859+02:00  INFO 3772 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-02-29T00:32:43.108+02:00  INFO 3772 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-02-29T00:32:43.110+02:00  INFO 3772 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-02-29T00:32:43.121+02:00  INFO 3772 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-02-29T00:32:43.300+02:00  INFO 3772 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-02-29T00:32:43.386+02:00  INFO 3772 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-02-29T00:32:43.436+02:00  INFO 3772 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-02-29T00:32:43.759+02:00  INFO 3772 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-02-29T00:32:43.813+02:00  WARN 3772 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-02-29T00:32:45.143+02:00  INFO 3772 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-02-29T00:32:45.243+02:00  INFO 3772 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-02-29T00:32:45.768+02:00  WARN 3772 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-02-29T00:32:46.601+02:00  INFO 3772 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-02-29T00:32:46.648+02:00  INFO 3772 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path ''
-2024-02-29T00:32:46.661+02:00  INFO 3772 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Started Dronetaskv1Application in 6.366 seconds (process running for 7.347)
-2024-02-29T00:33:55.502+02:00  INFO 3772 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-02-29T00:33:55.510+02:00  WARN 3772 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2024-02-29T00:33:55.511+02:00  INFO 3772 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-02-29T00:33:55.512+02:00  INFO 3772 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-02-29T00:34:00.810+02:00  INFO 10936 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Starting Dronetaskv1Application using Java 19.0.2 with PID 10936 (F:\Java\dronetaskv1\target\classes started by MOHAMED in F:\Java\dronetaskv1)
-2024-02-29T00:34:00.812+02:00  INFO 10936 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : No active profile set, falling back to 1 default profile: "default"
-2024-02-29T00:34:00.878+02:00  INFO 10936 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-02-29T00:34:00.879+02:00  INFO 10936 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-02-29T00:34:01.766+02:00  INFO 10936 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-02-29T00:34:01.844+02:00  INFO 10936 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 2 JPA repository interfaces.
-2024-02-29T00:34:02.570+02:00  INFO 10936 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2024-02-29T00:34:02.585+02:00  INFO 10936 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-02-29T00:34:02.585+02:00  INFO 10936 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
-2024-02-29T00:34:02.642+02:00  INFO 10936 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-02-29T00:34:02.642+02:00  INFO 10936 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1763 ms
-2024-02-29T00:34:02.673+02:00  INFO 10936 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-02-29T00:34:02.911+02:00  INFO 10936 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-02-29T00:34:02.913+02:00  INFO 10936 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-02-29T00:34:02.929+02:00  INFO 10936 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-02-29T00:34:03.077+02:00  INFO 10936 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-02-29T00:34:03.148+02:00  INFO 10936 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-02-29T00:34:03.202+02:00  INFO 10936 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-02-29T00:34:03.473+02:00  INFO 10936 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-02-29T00:34:03.525+02:00  WARN 10936 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-02-29T00:34:04.670+02:00  INFO 10936 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-02-29T00:34:04.721+02:00  INFO 10936 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-02-29T00:34:05.227+02:00  WARN 10936 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-02-29T00:34:05.975+02:00  INFO 10936 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-02-29T00:34:06.014+02:00  INFO 10936 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path ''
-2024-02-29T00:34:06.026+02:00  INFO 10936 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Started Dronetaskv1Application in 5.827 seconds (process running for 6.937)
-2024-02-29T00:34:13.415+02:00  INFO 10936 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-02-29T00:34:13.423+02:00  WARN 10936 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2024-02-29T00:34:13.424+02:00  INFO 10936 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-02-29T00:34:13.425+02:00  INFO 10936 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-02-29T01:16:49.698+02:00  INFO 15504 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Starting Dronetaskv1Application using Java 19.0.2 with PID 15504 (F:\Java\dronetaskv1\target\classes started by MOHAMED in F:\Java\dronetaskv1)
-2024-02-29T01:16:49.701+02:00  INFO 15504 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : No active profile set, falling back to 1 default profile: "default"
-2024-02-29T01:16:49.755+02:00  INFO 15504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-02-29T01:16:49.755+02:00  INFO 15504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-02-29T01:16:50.547+02:00  INFO 15504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-02-29T01:16:50.610+02:00  INFO 15504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 2 JPA repository interfaces.
-2024-02-29T01:16:51.300+02:00  INFO 15504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2024-02-29T01:16:51.314+02:00  INFO 15504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-02-29T01:16:51.315+02:00  INFO 15504 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
-2024-02-29T01:16:51.365+02:00  INFO 15504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-02-29T01:16:51.366+02:00  INFO 15504 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1610 ms
-2024-02-29T01:16:51.395+02:00  INFO 15504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-02-29T01:16:51.608+02:00  INFO 15504 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-02-29T01:16:51.609+02:00  INFO 15504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-02-29T01:16:51.621+02:00  INFO 15504 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-02-29T01:16:51.752+02:00  INFO 15504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-02-29T01:16:51.808+02:00  INFO 15504 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-02-29T01:16:51.857+02:00  INFO 15504 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-02-29T01:16:52.114+02:00  INFO 15504 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-02-29T01:16:52.164+02:00  WARN 15504 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-02-29T01:16:53.281+02:00  INFO 15504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-02-29T01:16:53.331+02:00  INFO 15504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-02-29T01:16:53.790+02:00  WARN 15504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-02-29T01:16:54.547+02:00  INFO 15504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-02-29T01:16:54.591+02:00  INFO 15504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path ''
-2024-02-29T01:16:54.604+02:00  INFO 15504 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Started Dronetaskv1Application in 5.486 seconds (process running for 6.385)
-2024-02-29T01:17:00.218+02:00  INFO 15504 --- [http-nio-9090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-02-29T01:17:00.218+02:00  INFO 15504 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-02-29T01:17:00.220+02:00  INFO 15504 --- [http-nio-9090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-02-29T01:24:14.613+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 29/02/2024 01:24
-2024-02-29T01:24:14.615+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 55 battery capacity due to delivering Medications
-2024-02-29T01:24:18.604+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 29/02/2024 01:24
-2024-02-29T01:24:18.604+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 51 battery capacity due to reached its destination and unloading Medications
-2024-02-29T01:24:22.609+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 29/02/2024 01:24
-2024-02-29T01:24:22.610+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 50 battery capacity due to returning to its Base
-2024-02-29T01:24:24.619+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 29/02/2024 01:24
-2024-02-29T01:24:24.619+02:00  INFO 15504 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 45 battery capacity due to returned to its Base and landing
-2024-02-29T01:28:27.305+02:00  INFO 15504 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-02-29T01:28:27.314+02:00  WARN 15504 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2024-02-29T01:28:27.315+02:00  INFO 15504 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-02-29T01:28:27.318+02:00  INFO 15504 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-01T17:12:08.243+02:00  INFO 9672 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Starting Dronetaskv1Application using Java 19.0.2 with PID 9672 (F:\Java\dronetaskv1\target\classes started by MOHAMED in F:\Java\dronetaskv1)
+2024-03-01T17:12:08.246+02:00  INFO 9672 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : No active profile set, falling back to 1 default profile: "default"
+2024-03-01T17:12:08.304+02:00  INFO 9672 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-03-01T17:12:08.305+02:00  INFO 9672 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-03-01T17:12:09.247+02:00  INFO 9672 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-01T17:12:09.321+02:00  INFO 9672 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 2 JPA repository interfaces.
+2024-03-01T17:12:10.062+02:00  INFO 9672 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2024-03-01T17:12:10.076+02:00  INFO 9672 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-01T17:12:10.076+02:00  INFO 9672 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-01T17:12:10.135+02:00  INFO 9672 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-01T17:12:10.136+02:00  INFO 9672 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1829 ms
+2024-03-01T17:12:10.165+02:00  INFO 9672 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-01T17:12:10.421+02:00  INFO 9672 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-03-01T17:12:10.423+02:00  INFO 9672 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-01T17:12:10.433+02:00  INFO 9672 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-03-01T17:12:10.580+02:00  INFO 9672 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-01T17:12:10.676+02:00  INFO 9672 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-01T17:12:10.719+02:00  INFO 9672 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-01T17:12:11.038+02:00  INFO 9672 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-01T17:12:11.096+02:00  WARN 9672 --- [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-01T17:12:12.214+02:00  INFO 9672 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-01T17:12:12.265+02:00  INFO 9672 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-01T17:12:12.737+02:00  WARN 9672 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-01T17:12:13.604+02:00  INFO 9672 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-03-01T17:12:13.644+02:00  INFO 9672 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path ''
+2024-03-01T17:12:13.658+02:00  INFO 9672 --- [restartedMain] c.e.dronetaskv1.Dronetaskv1Application   : Started Dronetaskv1Application in 5.992 seconds (process running for 7.078)
+2024-03-01T17:12:27.142+02:00  INFO 9672 --- [http-nio-9090-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-01T17:12:27.142+02:00  INFO 9672 --- [http-nio-9090-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-01T17:12:27.143+02:00  INFO 9672 --- [http-nio-9090-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-01T17:12:47.185+02:00  WARN 9672 --- [http-nio-9090-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.example.dronetaskv1.exceptionHandler.DroneNotLoadingException: Drone not containing any medications yet]
+2024-03-01T17:12:53.674+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 01/03/2024 17:12
+2024-03-01T17:12:53.678+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 56 battery capacity due to delivering Medications
+2024-03-01T17:12:55.674+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 01/03/2024 17:12
+2024-03-01T17:12:55.674+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 52 battery capacity due to reached its destination and unloading Medications
+2024-03-01T17:13:01.671+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 01/03/2024 17:13
+2024-03-01T17:13:01.672+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 51 battery capacity due to returning to its Base
+2024-03-01T17:13:01.679+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : Drone capacity check at 01/03/2024 17:13
+2024-03-01T17:13:01.680+02:00  INFO 9672 --- [scheduling-1] c.e.d.serviceImpl.DroneServiceImpl       : drone with serial number 111113 has 49 battery capacity due to returned to its Base and landing
+2024-03-01T17:13:28.908+02:00  INFO 9672 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-01T17:13:28.916+02:00  WARN 9672 --- [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-03-01T17:13:28.916+02:00  INFO 9672 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-01T17:13:28.918+02:00  INFO 9672 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
